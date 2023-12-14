@@ -10,9 +10,13 @@ async function GetTodo() {
 
     console.log(todo);
 
-    while(TodoListBody.firstChild){
-        TodoListBody.removeChild(TodoListBody.firstChild);
-    }
+    // while(TodoListBody.firstChild){
+    //     TodoListBody.removeChild(TodoListBody.firstChild);
+    // }
+
+    while (TodoListBody.firstChild) {
+    TodoListBody.removeChild(TodoListBody.firstChild);
+}
 
 
     todo.forEach(TodoItem => {
@@ -20,24 +24,30 @@ async function GetTodo() {
 
         
             const TodoListElement = document.createElement('tr');
-            const tdId = document.createElement('td');
+
+            const tdId = document.createElement('th');
             const tdTitle = document.createElement('td');
             const tdDescription = document.createElement('td');
+            const tdCheckbox = document.createElement('td');
             const checkbox = document.createElement('input');
+            const tdDeleteButton = document.createElement('td');
             const DeleteButton = document.createElement('button');
 
+            this.scope = "row";
             tdId.textContent = TodoItem.id;
             tdTitle.textContent = TodoItem.title;
             tdDescription.textContent = TodoItem.detail;
             checkbox.type = "checkbox";
             checkbox.name = "checkbox";
             checkbox.id = "checkbox-" + TodoItem.id;
+            tdCheckbox.appendChild(checkbox);
             DeleteButton.textContent = "Delete";
             DeleteButton.type = "button";
             DeleteButton.name = "DeleteButton";
             DeleteButton.id = "DeleteButton-" + TodoItem.id;
             DeleteButton.value = TodoItem.id;
-
+            DeleteButton.className = "btn btn-outline-danger btn-sm"
+            tdDeleteButton.appendChild(DeleteButton);
             if (TodoItem.complete) {
                 checkbox.checked = true;
             }
@@ -59,13 +69,14 @@ async function GetTodo() {
                 DeleteTask(event.target.value);
             }
             );
+            
 
             
             TodoListElement.appendChild(tdId);
-            TodoListElement.appendChild(checkbox);
+            TodoListElement.appendChild(tdCheckbox);
             TodoListElement.appendChild(tdTitle);
             TodoListElement.appendChild(tdDescription);
-            TodoListElement.appendChild(DeleteButton);
+            TodoListElement.appendChild(tdDeleteButton);
             
             TodoListBody.appendChild(TodoListElement);
 

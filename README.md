@@ -15,6 +15,6 @@ FastAPIで初めて作ったtodoアプリ
 
 ```poetry shell```で仮想環境内に入る
 
-ファイル内の一番上のディレクトリで```uvicorn main.app:api --reload```を実行
+ファイル内の一番上のディレクトリで```uvicorn app.main:api --reload```を実行
 
 表示されたurlにアクセス．/docsを追加すると，かんたんなデモができる．
