@@ -3,51 +3,70 @@
 
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <title>Todo List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-<body>
+<body class=m-3>
 
     <h1>
         TODO LIST
     </h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form id="AddTodo">
+                <div class="mb-3">
+                    <label for="Todo Subject" class="form-label">ToDo Subject</label>
+                    <input type="text" class="form-control" id="todo-title" name="title" placeholder="Enter Todo">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                    <label for="Todo Detail" class="form-label">ToDo Detail</label>
+                    <input type="text" class="form-control" id="todo-detail" name="detail" placeholder="Enter Detail">
+                </div>
 
-    <form id = "AddTodo">
+                <button type="button" class="btn btn-primary" onclick="AddTodo()">Add Todo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- <form id="AddTodo">
         <input type="text" id="todo-title" name="title" placeholder="Enter Todo">
         <br>
-        <input type = "text" id = "todo-detail" name = "detail" placeholder = "Enter Detail">
-        
-        <button type = "button" class = "btn btn-outline-success btn-sm"onclick="AddTodo()"> Add Todo</button>
-    </form>
+        <input type="text" id="todo-detail" name="detail" placeholder="Enter Detail">
 
-<br>
+        <button type="button" class="btn btn-outline-success btn-sm" onclick="AddTodo()"> Add Todo</button>
+    </form> -->
 
- <button type="button" class="btn btn-primary" onclick="GetTodo()">Reload Todo</button>
+    <br>
 
- <br>
- <br>
+    <br>
 
- <table  class="table table-striped">
-    <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Done
-          </th>
 
-          <th scope="col">Subject</th>
-          <th scope="col">Details</th>
-            <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody id = "TodoList-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Done
+                </th>
+
+                <th scope="col">Subject</th>
+                <th scope="col">Details</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="TodoList-body">
         </tbody>
- </table>
-   
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
- <script src = TodoApiCall.js></script>
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src=TodoApiCall.js></script>
 </body>
 
 </html>
