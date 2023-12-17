@@ -17,4 +17,10 @@ FastAPIで初めて作ったtodoアプリ
 
 ファイル内の一番上のディレクトリで```uvicorn app.main:api --reload```を実行
 
-表示されたurlにアクセス．/docsを追加すると，かんたんなデモができる．
+次にfront配下にあるindex.htmlにアクセスする．
+
+するとtodoアプリにアクセスできる．
+
+
+https://github.com/L3tsG0/MyFirstTodo/assets/132372519/5dd04e75-3fc9-4fd9-8099-2a33123bd1df
+
