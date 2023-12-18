@@ -9,17 +9,16 @@ async function GetTodo() {
 
     console.log(todo);
 
+    //更新時に一旦中身を空にする
     while (TodoListBody.firstChild) {
         TodoListBody.removeChild(TodoListBody.firstChild);
     }
 
 
     todo.forEach(TodoItem => {
-        // console.log(TodoItem.id);
 
-
+        // HTML要素を生成する
         const TodoListElement = document.createElement('tr');
-
         const tdId = document.createElement('th');
         const tdTitle = document.createElement('td');
         const tdDescription = document.createElement('td');
@@ -36,18 +35,9 @@ async function GetTodo() {
         checkbox.name = "checkbox";
         checkbox.id = "checkbox-" + TodoItem.id;
         tdCheckbox.appendChild(checkbox);
-        DeleteButton.textContent = "Delete";
-        DeleteButton.type = "button";
-        DeleteButton.name = "DeleteButton";
-        DeleteButton.id = "DeleteButton-" + TodoItem.id;
-        DeleteButton.value = TodoItem.id;
-        DeleteButton.className = "btn btn-outline-danger btn-sm"
-        tdDeleteButton.appendChild(DeleteButton);
-        if (TodoItem.complete) {
-            checkbox.checked = true;
-        }
-
         checkbox.value = TodoItem.id;
+
+        //checkboxの設定,チェックされたら完了にする
 
         checkbox.addEventListener('change', (event) => {
             if (event.target.checked) {
@@ -59,20 +49,31 @@ async function GetTodo() {
             }
         });
 
+        //DeleteButtonの設定
+        DeleteButton.textContent = "Delete";
+        DeleteButton.type = "button";
+        DeleteButton.name = "DeleteButton";
+        DeleteButton.id = "DeleteButton-" + TodoItem.id;
+        DeleteButton.value = TodoItem.id;
+        DeleteButton.className = "btn btn-outline-danger btn-sm"
+        tdDeleteButton.appendChild(DeleteButton);
+        if (TodoItem.complete) {
+            checkbox.checked = true;
+        }
+
+        //DeleteButtonが押されたら削除する
         DeleteButton.addEventListener('click', (event) => {
             console.log(`Task ID ${event.target.value} is deleted`);
             DeleteTask(event.target.value);
         }
         );
 
-
-
+        // HTML要素を組み立てる
         TodoListElement.appendChild(tdId);
         TodoListElement.appendChild(tdCheckbox);
         TodoListElement.appendChild(tdTitle);
         TodoListElement.appendChild(tdDescription);
         TodoListElement.appendChild(tdDeleteButton);
-
         TodoListBody.appendChild(TodoListElement);
 
 
@@ -84,10 +85,18 @@ async function GetTodo() {
 
 }
 
+
 async function AddTodo() {
 
     const title = document.getElementById('todo-title').value;
     const detail = document.getElementById('todo-detail').value;
+
+    //titleが空の場合はエラーを出す
+    if (title == "") {
+        alert("タイトルが空です");
+        return;
+    }
+
     let body = {
         title: title,
         detail: detail
