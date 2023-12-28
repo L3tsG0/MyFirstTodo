@@ -1,8 +1,8 @@
 from pydantic import BaseModel
-
+from pydantic.types import constr
 
 class CreateTodoRequest(BaseModel):
-    title : str
+    title : constr(min_length=1,max_length=50)
     detail : str
 
 class TaskListResponse(BaseModel):
